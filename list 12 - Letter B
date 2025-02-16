@@ -1,0 +1,19 @@
+using System;
+
+namespace PAtrilhas09
+{
+  class Program
+  {
+    public static void Main (string[] args)
+    {
+      string[] nomes = {"Pedro", "Ryan", "Rocha", "Silva"};
+
+      foreach(string nome in nomes)
+      {
+        Console.WriteLine(nome);
+      }
+      Console.WriteLine("Press any key to continue...");
+      Console.ReadKey(true);
+    }
+  }
+}
