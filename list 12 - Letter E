@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+namespace PAtrilhas09
+{
+    class Program
+    {
+        public static void Main()
+        {
+
+        List <int> nume = new List<int>();
+        
+        nume.Add(1);
+        nume.Add(2);
+        nume.Add(3);
+        nume.Add(9);
+        nume.Add(5);
+
+        int soma = 0;
+        
+        foreach(int num in nume){
+        	soma += num;
+        }
+        
+        double media = (double)soma / nume.Count;
+        
+        Console.WriteLine("A média dos números na lista é: " + media);
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+        }
+    }
+}
