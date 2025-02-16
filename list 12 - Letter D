@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+
+namespace PAtrilhas09
+{
+    class Program
+    {
+    	public static void Main(string[] args)
+        {
+        
+        List <string> text = new List<string>();
+        
+        text.Add("A adm é top...");  
+        text.Add("A senha pode ser salgadinho_fofura123!");  
+        text.Add("Eu faço programa com C#.");  
+        text.Add("Café de milho.");
+     
+        
+        string tMaior = text[0];
+        
+        foreach(string texto in text){
+        	
+        	if (texto.Length > tMaior.Length){
+        		
+        		tMaior = texto;
+        	}
+
+        }
+        
+            Console.WriteLine("o maior texto da lista é:\n" + tMaior);
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
+    }
+}
