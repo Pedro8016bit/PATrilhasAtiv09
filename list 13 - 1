@@ -1,0 +1,63 @@
+using System;
+
+namespace PAtrilhas09
+{
+	class Cauc
+	{
+		public static double soma(double a, double b)
+		{
+			return a+b;
+		}
+		public static double sub(double a, double b)
+		{
+			return a-b;
+		}
+		public static double mult(double a, double b)
+		{
+			return a*b;
+		}
+		public static double divi(double a, double b)
+		{
+			if (b == 0)
+			{
+			return double.NaN;
+			}
+			else{
+		    return a / b;
+			}
+		}
+	}
+	
+	class Program
+	{
+		public static void Main(string[] args)
+		{
+			Cauc c = new Cauc();
+			
+			Console.WriteLine("digite um numero");
+			double a = double.Parse(Console.ReadLine());
+			Console.WriteLine("digite outro numero");
+			double b = double.Parse(Console.ReadLine());
+			Console.WriteLine("agora escolha um operador +, -, /, *");
+			string esc = Convert.ToString(Console.ReadLine());
+			
+			switch(esc)
+			{
+				case "+":
+					Console.WriteLine(Cauc.soma(a,b));
+					break;
+				case "-":
+					Console.WriteLine(Cauc.sub(a,b));
+					break;
+				case "/":
+					Console.WriteLine(Cauc.divi(a,b));
+					break;
+				case "*":
+					Console.WriteLine(Cauc.mult(a,b));
+					break;
+			}
+			Console.Write("Press any key to continue . . . ");
+			Console.ReadKey(true);
+		}
+	}
+}
