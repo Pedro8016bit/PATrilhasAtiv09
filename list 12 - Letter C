@@ -1,0 +1,33 @@
+using System;
+using System.Linq;
+
+namespace PAtrilhas09
+{
+  class Preogram
+  {
+    public static void Main(string[] args)
+    {
+
+      Console.WriteLine("Digite um numero para o tamnanho da array");
+      int num = int.Parse(Console.ReadLine());
+      int[] nume = new int[num];
+      Console.Write("Agora ");
+
+      for (int i = 0; i < num; i++)
+      {
+        Console.WriteLine("digite o numero " + i + " do array");
+        nume[i] = int.Parse(Console.ReadLine());
+      }
+
+      foreach(int cont in nume)
+      {
+      	Console.WriteLine(cont);
+      }
+      Console.WriteLine("o maior é: ");
+      Console.WriteLine(nume.Max());
+      
+      Console.WriteLine("Press any key to continue...");
+      Console.ReadKey(true);
+    }
+  }
+}
