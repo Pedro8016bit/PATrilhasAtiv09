@@ -1,0 +1,61 @@
+using System;
+
+namespace PAtrilhas09
+{
+	class nuBankiss
+	{
+		private double saldo;
+		private bool abeconta;
+		private string email;
+		private string senha;
+		
+		public string nome;
+		public int idade;
+		
+			
+		public nuBankiss()
+		{
+			saldo = 0;
+			abeconta = false;
+		}
+		public void abrConta()
+		{
+			string nome = Convert.ToString(Console.ReadLine());
+			this.nome = nome;
+			
+			int idade = int.Parse(Console.ReadLine());
+			this.idade = idade;
+			
+			string email = Convert.ToString(Console.ReadLine());
+			this.email = email;
+			
+			string senha = Convert.ToString(Console.ReadLine());
+			this.senha = senha;
+			abeconta = true;
+		
+	}
+		}
+	
+	class Program
+	{
+		public static void Main(string[] args)
+		{
+			int i = 0;
+			Console.WriteLine("Você quer abrir uma conta?");
+			Console.WriteLine("sim  /  não");
+			string esc = Convert.ToString(Console.ReadLine());
+			
+			var conta = new nuBankiss();
+			
+			if (esc == "sim")
+			{
+				Console.WriteLine("Digite nessa ordem\nnome:\nidade:\nemail:\nsenha:\n");
+				conta.abrConta();
+				
+				
+			}
+			Console.Write("Press any key to continue . . . ");
+			Console.ReadKey(true);
+		}
+	}
+}
