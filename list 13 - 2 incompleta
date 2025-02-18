@@ -1,61 +1,104 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PAtrilhas09
 {
-	class nuBankiss
-	{
-		private double saldo;
-		private bool abeconta;
-		private string email;
-		private string senha;
-		
-		public string nome;
-		public int idade;
-		
-			
-		public nuBankiss()
-		{
-			saldo = 0;
-			abeconta = false;
-		}
-		public void abrConta()
-		{
-			string nome = Convert.ToString(Console.ReadLine());
-			this.nome = nome;
-			
-			int idade = int.Parse(Console.ReadLine());
-			this.idade = idade;
-			
-			string email = Convert.ToString(Console.ReadLine());
-			this.email = email;
-			
-			string senha = Convert.ToString(Console.ReadLine());
-			this.senha = senha;
-			abeconta = true;
-		
-	}
-		}
-	
-	class Program
-	{
-		public static void Main(string[] args)
-		{
-			int i = 0;
-			Console.WriteLine("Você quer abrir uma conta?");
-			Console.WriteLine("sim  /  não");
-			string esc = Convert.ToString(Console.ReadLine());
-			
-			var conta = new nuBankiss();
-			
-			if (esc == "sim")
-			{
-				Console.WriteLine("Digite nessa ordem\nnome:\nidade:\nemail:\nsenha:\n");
-				conta.abrConta();
-				
-				
-			}
-			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
-		}
-	}
+    class nuBankiss
+    {
+        private static int proximo_Num = 1000;
+        public int numConta { get; private set; }
+        
+        public double saldo{get; private set;}
+        private bool contaAtiva;
+        private string email;
+        private string senha;
+
+        public string nome { get; private set; }
+        public int idade { get; private set; }
+
+        public nuBankiss()
+        {
+            this.numConta = proximo_Num++;
+            saldo = 0;
+            contaAtiva = false;
+        }
+
+        public void abrConta()
+        {
+            Console.WriteLine("Digite seu nome:");
+            this.nome = Console.ReadLine();
+
+            Console.WriteLine("Digite sua idade:");
+            this.idade = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite seu email:");
+            this.email = Console.ReadLine();
+
+            Console.WriteLine("Digite sua senha:");
+            this.senha = Console.ReadLine();
+            
+            contaAtiva = true;
+            Console.WriteLine("Conta criada com sucesso! Número da conta: " + this.numConta);
+        }
+        
+        public double inserSaldo()
+        {
+        	Console.WriteLine("Insira o valor");
+        	this.saldo = double.Parse(Console.ReadLine());
+        	return saldo;
+        }
+        public bool fecha_Conta()
+        {
+        	contaAtiva = false
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+        	int esc2 = 0;
+            Console.WriteLine("Você quer abrir uma conta?");
+            Console.WriteLine("sim  /  não");
+
+            string esc = Console.ReadLine();
+            
+
+            nuBankiss conta = new nuBankiss();
+
+            if (esc.ToLower() == "sim")
+            {
+                Console.WriteLine("Aguarde...");
+                Task.Delay(3000).Wait();
+                Console.WriteLine("");
+
+                conta.abrConta();
+                Console.WriteLine("Aguarde...");
+                Task.Delay(3000).Wait();
+                Console.Clear();
+            }
+            else
+            {
+            	Console.WriteLine("Até mais!!!");
+            	Console.WriteLine("Aguarde fechando programa...");
+                Task.Delay(3000).Wait();
+            	return;
+            }
+            
+            while(true)
+            {
+            	Console.WriteLine("1- Inserir saldo \n2- Realizar saque \n3- Fechar conta \n4- Criar nova conta \n5- Sair \nSaldo atual:" + conta.saldo);
+            	esc2 = int.Parse(Console.ReadLine());
+            	if (esc2 == 1)
+            	{
+            		conta.inserSaldo();
+            	}
+            	
+            }
+
+            Console.Write("Press any key to continue . . . ");
+            Console.ReadKey(true);
+        }
+    }
 }
