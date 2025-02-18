@@ -6,16 +6,15 @@ namespace PAtrilhas09
 {
     class nuBankiss
     {
-        private static int proximo_Num = 1000;
         public int numConta { get; private set; }
-        
         public double saldo{get; private set;}
+        public string nome { get; private set; }
+        public int idade { get; private set; }
+        public double newValue = 0;
         private bool contaAtiva;
         private string email;
         private string senha;
-
-        public string nome { get; private set; }
-        public int idade { get; private set; }
+        private static int proximo_Num = 1000;
 
         public nuBankiss()
         {
@@ -48,6 +47,15 @@ namespace PAtrilhas09
         	this.saldo = double.Parse(Console.ReadLine());
         	return saldo;
         }
+        
+        public double retirada()
+        {
+        	Console.WriteLine("Digite o valor da retirada:");
+        	double saquei = double.Parse(Console.ReadLine());
+        	this.newValue = saldo - saquei;
+        
+        	return newValue;
+        }
      
     }
 
@@ -55,6 +63,7 @@ namespace PAtrilhas09
     {
         public static void Main(string[] args)
         {
+        	int timer = 1000;
         	int esc2 = 0;
             Console.WriteLine("Você quer abrir uma conta?");
             Console.WriteLine("sim  /  não");
@@ -67,29 +76,34 @@ namespace PAtrilhas09
             if (esc.ToLower() == "sim")
             {
                 Console.WriteLine("Aguarde...");
-                Task.Delay(3000).Wait();
+                Task.Delay(timer).Wait();
                 Console.WriteLine("");
 
                 conta.abrConta();
                 Console.WriteLine("Aguarde...");
-                Task.Delay(3000).Wait();
+                Task.Delay(timer).Wait();
                 Console.Clear();
             }
             else
             {
             	Console.WriteLine("Até mais!!!");
             	Console.WriteLine("Aguarde fechando programa...");
-                Task.Delay(3000).Wait();
+                Task.Delay(timer).Wait();
             	return;
             }
             
             while(true)
             {
-            	double retirada = 0;
-            	double saldoso = conta.saldo;
-            	double ja_tirei = saldoso - retirada;
             	Console.WriteLine("Nome: " + conta.nome);
-            	Console.WriteLine("1- Inserir saldo \n2- Realizar saque \n3- Fechar conta \n4- Editar conta \n5- Sair \nSaldo atual:" + ja_tirei);
+            	Console.WriteLine("1- Inserir saldo \n2- Realizar saque \n3- Fechar conta \n4- Editar conta \n5- Sair");
+            	if (conta.newValue == 0)
+            	{
+            		Console.WriteLine("Saldo atual:" + conta.saldo);
+            	}
+            	else
+            	{
+            		Console.WriteLine("Saldo atual:" + conta.newValue);
+            	}
             	esc2 = int.Parse(Console.ReadLine());
             
             	switch(esc2)
@@ -97,13 +111,12 @@ namespace PAtrilhas09
             				   case 1: conta.inserSaldo();
             				   Console.Clear();
             				   break;
-            				   case 2: Console.WriteLine("digite o valor da retirada:");
-            				   retirada = double.Parse(Console.ReadLine());
-            				   
+            				   case 2: conta.retirada();
             				   Console.Clear();
             				   break;
             				   case 3: 
             				   Console.WriteLine("Aguarde o fechamento ");
+            				   
             				   for (int j = 0; j < 3; j++)
             				   {
             				   	for (int i = 0;  i < 3; i++)
@@ -114,7 +127,6 @@ namespace PAtrilhas09
             				   	Console.Clear();
             				   }
             				   return;
-            				   break;
             				   case 4: conta.abrConta();
             				   Console.Clear();
             				   break;
@@ -123,10 +135,8 @@ namespace PAtrilhas09
             	}
             	
             	
+            	
             }
-
-            Console.Write("Press any key to continue . . . ");
-            Console.ReadKey(true);
         }
     }
 }
