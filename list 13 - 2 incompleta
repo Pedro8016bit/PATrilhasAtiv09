@@ -48,10 +48,7 @@ namespace PAtrilhas09
         	this.saldo = double.Parse(Console.ReadLine());
         	return saldo;
         }
-        public bool fecha_Conta()
-        {
-        	contaAtiva = false
-        }
+     
     }
 
     class Program
@@ -88,12 +85,43 @@ namespace PAtrilhas09
             
             while(true)
             {
-            	Console.WriteLine("1- Inserir saldo \n2- Realizar saque \n3- Fechar conta \n4- Criar nova conta \n5- Sair \nSaldo atual:" + conta.saldo);
+            	double retirada = 0;
+            	double saldoso = conta.saldo;
+            	double ja_tirei = saldoso - retirada;
+            	Console.WriteLine("Nome: " + conta.nome);
+            	Console.WriteLine("1- Inserir saldo \n2- Realizar saque \n3- Fechar conta \n4- Editar conta \n5- Sair \nSaldo atual:" + ja_tirei);
             	esc2 = int.Parse(Console.ReadLine());
-            	if (esc2 == 1)
+            
+            	switch(esc2)
             	{
-            		conta.inserSaldo();
+            				   case 1: conta.inserSaldo();
+            				   Console.Clear();
+            				   break;
+            				   case 2: Console.WriteLine("digite o valor da retirada:");
+            				   retirada = double.Parse(Console.ReadLine());
+            				   
+            				   Console.Clear();
+            				   break;
+            				   case 3: 
+            				   Console.WriteLine("Aguarde o fechamento ");
+            				   for (int j = 0; j < 3; j++)
+            				   {
+            				   	for (int i = 0;  i < 3; i++)
+            				   		{
+            				   			Console.Write(".");
+            				   			Task.Delay(1000).Wait();
+            				   		}
+            				   	Console.Clear();
+            				   }
+            				   return;
+            				   break;
+            				   case 4: conta.abrConta();
+            				   Console.Clear();
+            				   break;
+            				   case 5: return;
+            				   
             	}
+            	
             	
             }
 
