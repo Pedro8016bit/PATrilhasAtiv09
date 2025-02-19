@@ -1,0 +1,77 @@
+using System;
+
+public class CarrinhoDeCompras
+{
+    private string[] nomesProdutos;
+    private double[] precosProdutos;
+    private int contador; 
+
+    public CarrinhoDeCompras(int capacidade = 10)
+    {
+        nomesProdutos = new string[capacidade];
+        precosProdutos = new double[capacidade];
+        contador = 0;
+    }
+
+    public void AdicionarProduto(string nome, double preco)
+    {
+        if (contador < nomesProdutos.Length)
+        {
+            nomesProdutos[contador] = nome; 
+            precosProdutos[contador] = preco; 
+            contador++; 
+            Console.WriteLine("Produto " + nome + " adicionado ao carrinho.");
+        }
+        else
+        {
+            Console.WriteLine("Carrinho cheio. Não é possível adicionar mais produtos.");
+        }
+    }
+
+  
+    public double CalcularTotal()
+    {
+        double total = 0;
+        for (int i = 0; i < contador; i++)
+        {
+            total += precosProdutos[i]; 
+        }
+        return total;
+    }
+
+    public void ExibirItens()
+    {
+        if (contador == 0)
+        {
+            Console.WriteLine("O carrinho está vazio.");
+            return;
+        }
+
+        Console.WriteLine("Itens no carrinho:");
+        for (int i = 0; i < contador; i++)
+        {
+            Console.WriteLine(nomesProdutos[i] + " : R$ " + precosProdutos[i]);
+
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        CarrinhoDeCompras meuCarrinho = new CarrinhoDeCompras();
+
+        meuCarrinho.AdicionarProduto("Arroz - Codil 3/4", 79.95);
+        meuCarrinho.AdicionarProduto("Pão de forma", 25.50);
+        meuCarrinho.AdicionarProduto("Feijão carioca", 32.30);
+
+        meuCarrinho.ExibirItens();
+
+        double total = meuCarrinho.CalcularTotal();
+        Console.WriteLine("Valor total da compra:" + total);
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey(true);
+    }
+}
