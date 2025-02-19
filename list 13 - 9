@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+
+public class Agenda
+{
+    private List<string[]> contatos;
+
+    public Agenda()
+    {
+        contatos = new List<string[]>();
+    }
+
+    public void AddContato(string nome, string telefone)
+    {
+        contatos.Add(new string[] { nome, telefone });
+        Console.WriteLine("Contato adicionado com sucesso.");
+    }
+
+    public void Contatoloc(string nome)
+    {
+        foreach (var contato in contatos)
+        {
+            if (contato[0] == nome)
+            {
+            	Console.WriteLine("Contato encontrado: " + contato[0] + " - " + contato[1]);
+                return;
+            }
+        }
+        Console.WriteLine("Contato não encontrado.");
+    }
+
+    public void RemoverContato(string nome)
+    {
+        for (int i = 0; i < contatos.Count; i++)
+        {
+            if (contatos[i][0] == nome)
+            {
+                contatos.RemoveAt(i);
+                Console.WriteLine("Contato removido com sucesso.");
+                return;
+            }
+        }
+        Console.WriteLine("Contato não encontrado.");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Agenda minhaAgenda = new Agenda();
+
+        minhaAgenda.AddContato("Papai_Lula", "9668-6000");
+        minhaAgenda.AddContato("Titio_Bolsonaro", "5504-5633");
+
+        minhaAgenda.Contatoloc("Papai_Lula");
+
+        minhaAgenda.RemoverContato("Titio_Bolsonaro");
+
+        minhaAgenda.Contatoloc("Titio_Bolsonaro");
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+    }
+}
