@@ -1,0 +1,73 @@
+using System;
+
+public class ContaBancaria
+{
+	private decimal saldo;
+	
+	public ContaBancaria(decimal saldoInicial)
+  {
+		saldo = saldoInicial;
+	}
+	
+	public void Depositar (decimal valor)
+  {
+		if (valor > 0)
+      {
+			
+			saldo += valor;
+        		
+        	Console.WriteLine("Depósito de " + valor + " realizado com sucesso.");
+        	
+		  }
+    else
+      { 
+			
+			Console.WriteLine("O valor do depósito deve ser maior que zero.");
+			
+	  	}
+	}
+	
+	public void Sacar(decimal valor){
+		
+		if (valor > 0){
+			
+			if ( saldo >= valor){
+				
+				saldo -= valor;
+	            Console.WriteLine("Saque de " + valor + " realizado com sucesso.");
+			}else{
+				
+				Console.WriteLine("Saldo insuficiente para realizar o saque.");
+			}
+		}else{
+			
+			Console.WriteLine("O valor do saque deve ser maior que zero.");
+		}
+		
+	}
+	
+	public void VerificarSaldo(){
+		
+		Console.WriteLine("Saldo atual: " + saldo); 
+		
+	}
+}
+
+public class Program
+{
+    public static void Main()
+    {
+    	ContaBancaria contaElo = new ContaBancaria(10000);
+    	
+    	contaElo.VerificarSaldo();
+    	
+    	contaElo.Sacar(500);
+    	
+    	contaElo.Depositar(100);
+    	
+    	contaElo.VerificarSaldo();
+  
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey(true);
+    }
+}
