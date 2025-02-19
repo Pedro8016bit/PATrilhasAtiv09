@@ -13,15 +13,15 @@ namespace PAtrilhas09
 		
 		public Produto (string nome, int quant, double precoUnitario)
 		{			
-			Nome = nome;
+		Nome = nome;
 	        Quanti = quant;
 	        PrecoUnitario = precoUnitario;
 		}
 		
-		public double CalcValueT(){
-			
+		public double CalcValueT()
+		{
 			return Quanti*PrecoUnitario;
-	}
+		}
 	
 }
 
