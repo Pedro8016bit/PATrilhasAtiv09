@@ -1,0 +1,52 @@
+using System;
+
+public class Aluno
+{
+    public string Nome { get; set; }
+    public int Nota1 { get; set; }
+    public int Nota2 { get; set; }
+
+    public Aluno(string nome, int nota1, int nota2)
+    {
+        Nome = nome;
+        Nota1 = nota1;
+        Nota2 = nota2;
+    }
+
+    public double CalcMedia()
+    {
+        int soma = Nota1 + Nota2;
+        return soma / 2.0; 
+    }
+
+   
+    public string Verify()
+    {
+        double media = CalcMedia(); 
+
+        if (media < 6){
+            return "Reprovado...";
+        }
+        else{
+            return "Aprovado!!!!"; 
+        }
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Aluno aluno = new Aluno("Pedro", 9, 10);
+
+        double resultadoMedia = aluno.CalcMedia();
+
+        string resultadoVerificacao = aluno.Verify();
+
+        Console.WriteLine("a media do aluno " + aluno.Nome + " foi de " + resultadoMedia + 
+                          " ele foi: " + resultadoVerificacao);
+
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+    }
+}
