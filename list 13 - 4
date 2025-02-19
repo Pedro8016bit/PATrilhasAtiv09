@@ -1,0 +1,45 @@
+using System;
+
+namespace PAtrilhas09
+{
+
+
+	public class Produto
+	{
+		
+		public string Nome {get; set;}
+		public int Quanti {get; set;}
+		public double PrecoUnitario {get; set;}
+		
+		public Produto (string nome, int quant, double precoUnitario)
+		{			
+			Nome = nome;
+	        Quanti = quant;
+	        PrecoUnitario = precoUnitario;
+		}
+		
+		public double CalcValueT(){
+			
+			return Quanti*PrecoUnitario;
+	}
+	
+}
+
+    class Program
+    {
+
+        public static void Main(string[] args)
+        {
+        	
+			Produto produto = new Produto ("Vestido" , 6 , 43.99);
+			
+			double valorTotal = produto.CalcValueT();
+			
+			Console.WriteLine("O valor total de " + produto.Quanti + " " + produto.Nome + "(s) é: R$ " + valorTotal);
+			
+
+            Console.Write("Press any key to continue . . . ");
+            Console.ReadKey(true);
+        }
+    }
+}
